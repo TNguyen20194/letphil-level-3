@@ -20,13 +20,40 @@ interface HeaderProps {
 //     images: ,
 // }
 
-function Header() {
+function Header({navLinks, images}: HeaderProps) {
   return (
-    <div>
-      <div></div>
-      <h1>Hello, World!</h1>
-    </div>
+    <header className="">
+        <div className="max-w[1264px] flex items-center">
+            {/* Left Logo */}
+            <div className="flex justify-start">
+                <img className="cursor-pointer" src={images.logo.src} alt={images.logo.alt} />
+            </div>
+            <div className="flex flex-1 justify-center">
+                {/* Center Navigation */}
+                <nav className="inline-flex justify-evenly">
+                {navLinks.map((link) => (
+                    <a href={link.href}>{link.link}</a>
+                ))}
+            </nav>
+            </div>
+            <div>
+                {/* Right Icons */}
+                <img className="cursor-pointer" src={images.search.src} alt={images.search.alt} />
+                <img className="cursor-pointer" src={images.bag.src} alt={images.bag.alt} />
+            </div>
+        </div>
+    </header>
   );
 }
 
 export default Header;
+
+
+const users = [
+    {id: 1, name: "Ava", email: "ava@email.com"},
+    {id: 2, name: "Noah", email: "noah@email.com"},
+]
+
+    {users.map((user) =>
+        <UserCard key={user.id} email={user.email} name={user.name}/>
+    )}
