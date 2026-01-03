@@ -47,13 +47,3 @@ function Header({navLinks, images}: HeaderProps) {
 }
 
 export default Header;
-
-
-const users = [
-    {id: 1, name: "Ava", email: "ava@email.com"},
-    {id: 2, name: "Noah", email: "noah@email.com"},
-]
-
-    {users.map((user) =>
-        <UserCard key={user.id} email={user.email} name={user.name}/>
-    )}

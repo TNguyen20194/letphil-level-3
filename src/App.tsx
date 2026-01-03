@@ -36,7 +36,6 @@ function App() {
 
   return (
     <>
-    {/* HEADER */}
     <Header navLinks={navLinks} images={images}/>
     <Body />
     <Footer />
