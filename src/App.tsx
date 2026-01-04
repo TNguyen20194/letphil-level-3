@@ -1,4 +1,7 @@
-import './App.css'
+import './App.css';
+import appleLogo from "./assets/apple-logo-svgrepo-com.svg";
+import searchLogo from "./assets/search-svgrepo-com.svg";
+import bagLogo from "./assets/bag-svgrepo-com.svg";
 
 import Header from "./components/header"
 import Body from "./components/body"
@@ -21,16 +24,16 @@ function App() {
 
   const images={
     logo: {
-      src: "",
+      src: appleLogo,
       alt: "Apple Logo"
     },
     search: {
-      src: "",
-      alt: "Search Icon"
+      src: searchLogo,
+      alt: "Search"
     },
     bag: {
-      src: "",
-      alt: "Bag Icon"
+      src: bagLogo,
+      alt: "Bag"
     }
   }
 
