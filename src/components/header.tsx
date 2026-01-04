@@ -23,7 +23,7 @@ interface HeaderProps {
 function Header({navLinks, images}: HeaderProps) {
   return (
     <header className="w-full">
-        <nav className="max-w-[1024px] mx-auto h-12 px-5.5">
+        <nav className="max-w-[1024px] mx-auto h-11 px-5.5">
             <ul className="flex items-center justify-between h-full">
                 {/* Apple Logo */}
                  <li className="flex items-center">

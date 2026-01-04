@@ -1,7 +1,17 @@
 import './App.css';
+// Header assets
 import appleLogo from "./assets/apple-logo-svgrepo-com.svg";
 import searchLogo from "./assets/search-svgrepo-com.svg";
 import bagLogo from "./assets/bag-svgrepo-com.svg";
+
+// Body assets
+import iphoneBanner from "./assets/iphone17.png";
+import appleWatchBanner from "./assets/apple-watch-series.png";
+import ipadAir from "./assets/ipadAir.png";
+import airpodPro from "./assets/airpodPro.png";
+import appleCard from "./assets/appleCard.png";
+import fitnessCard from "./assets/fitness.png";
+import macbookPro from "./assets/macbookPro.png";
 
 import Header from "./components/header"
 import Body from "./components/body"
