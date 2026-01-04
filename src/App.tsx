@@ -49,6 +49,7 @@ function App() {
 
   return (
     <>
+    {/* same as function Header({ navLinks, images} ) : HeaderProps) */}
     <Header navLinks={navLinks} images={images}/>
     <Body />
     <Footer />
