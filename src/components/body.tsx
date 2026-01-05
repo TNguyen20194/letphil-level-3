@@ -11,7 +11,6 @@ interface BodyProps {
   iphoneBanner: string,
   appleWatchBanner: string,
   ipadAirBanner: string,
-  
   airpodPro: string,
   appleCard: string,
   fitnessCard: string,
@@ -32,23 +31,27 @@ interface TitleProps {
 
 function Hero({ title, subtitle, banner, ctas }: HeroProps) {
   return (
-    <section className="w-full text-black">
-      <div className="max-auto py-10 text-center">
-        <h2 className="text-5xl font-semibold">
-          {title}
-        </h2>
-        <p className="mt-2 text-2xl">
-          {subtitle}
-        </p>
-        <div className="mt-4 flex justify-center gap-6">
-          {ctas.map((cta) => (
-            <a key={cta.label} href={cta.href} className="text-sm">
-              {cta.label}
-            </a>
-          ))}
+    <section className="w-full text-black bg-[#f5f5f7] mb-6">
+      <div className="max-w-[1024px] mx-auto pt-12 text-center">
+
+        <div className="relative z-10">
+          <h2 className="text-5xl font-semibold">
+            {title}
+          </h2>
+          <p className="mt-2 text-2xl">
+            {subtitle}
+          </p>
+          <div className="mt-4 flex justify-center gap-6">
+            {ctas.map((cta) => (
+              <a key={cta.label} href={cta.href} className="text-sm">
+                {cta.label}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="mt-6">
-          <img className="mx-auto" src={banner.src} alt={banner.alt} />
+
+        <div className="relative z-0 mt-[-120px]">
+          <img className="w-full mx-auto max-w-[900px]" src={banner.src} alt={banner.alt} />
         </div>
       </div>
     </section>
@@ -61,7 +64,7 @@ function Title({ title, subtitle, banner, ctas }: TitleProps) {
       <div className="text-center">
 
         <h3 className="text-2xl font-semibold">{title}</h3>
-        <p className="mt-2 text-1xl">{subtitle}</p>
+        <p className="mt-2 text-xl">{subtitle}</p>
 
         <div className="mt-3 flex justify-center gap-6">
           {ctas.map((cta) => (
@@ -70,7 +73,7 @@ function Title({ title, subtitle, banner, ctas }: TitleProps) {
         </div>
 
         <div className="mt-5">
-          <img src={banner.src} alt={banner.alt} className="max-auto" />
+          <img src={banner.src} alt={banner.alt} className="mx-auto" />
         </div>
       </div>
     </article>
@@ -128,7 +131,7 @@ function Body({
 
         {/* 2-column section */}
         <section className="w-full">
-          <div className="max-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* MacBook Pro 14 */}
             <Title
             title="MacBook Pro 14"
