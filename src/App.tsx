@@ -7,7 +7,7 @@ import bagLogo from "./assets/bag-svgrepo-com.svg";
 // Body assets
 import iphoneBanner from "./assets/iphone17.png";
 import appleWatchBanner from "./assets/apple-watch-series.png";
-import ipadAir from "./assets/ipadAir.png";
+import ipadAirBanner from "./assets/ipadAir.png";
 import airpodPro from "./assets/airpodPro.png";
 import appleCard from "./assets/appleCard.png";
 import fitnessCard from "./assets/fitness.png";
@@ -51,7 +51,15 @@ function App() {
     <>
     {/* same as function Header({ navLinks, images} ) : HeaderProps) */}
     <Header navLinks={navLinks} images={images}/>
-    <Body />
+    <Body
+    iphoneBanner={iphoneBanner}
+    appleWatchBanner={appleWatchBanner}
+    ipadAirBanner={ipadAirBanner}
+    airpodPro={airpodPro}
+    appleCard={appleCard}
+    fitnessCard={fitnessCard}
+    macbookPro={macbookPro}
+    />
     <Footer />
     </>
   )
