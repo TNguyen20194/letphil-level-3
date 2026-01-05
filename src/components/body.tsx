@@ -1,6 +1,7 @@
 type CTA = {
   label: string,
-  href: string
+  href: string,
+  variant?: "primary" | "secondary"
 };
 
 interface ImagesInterface {
@@ -20,19 +21,31 @@ interface HeroProps {
   title: string,
   subtitle: React.ReactNode,
   banner: ImagesInterface,
-  ctas: CTA[]
+  ctas: CTA[],
+  bgClass?: string
 }
 interface TitleProps {
   title: string,
   subtitle: React.ReactNode,
   banner: ImagesInterface,
-  ctas: CTA[]
+  ctas: CTA[],
+  dark?:boolean
 }
 
-function Hero({ title, subtitle, banner, ctas }: HeroProps) {
+function getCtaClass(variant: CTA["variant"] = "primary") {
+  const base = "inline-flex items-center justify-center rounded-full px-6 py-2 text-base transition-colors duration-200";
+
+  if(variant === "secondary") {
+    return `${base} border border-blue-600 text-blue-600 bg-white hover:bg-blue-600 hover:text-white`
+  }
+
+  return `${base} bg-blue-600 text-white hover:bg-blue-700`
+}
+
+function Hero({ title, subtitle, banner, ctas, bgClass }: HeroProps) {
   return (
-    <section className="w-full text-black bg-[#f5f5f7] mb-6">
-      <div className="max-w-[1024px] mx-auto pt-12 text-center">
+    <section className={`w-full text-black mb-6 ${bgClass || "bg-[#f5f5f7]"}`}>
+      <div className="max-w-[1024px] mx-auto pt-10 text-center">
 
         <div className="relative z-10">
           <h2 className="text-5xl font-semibold">
@@ -41,9 +54,9 @@ function Hero({ title, subtitle, banner, ctas }: HeroProps) {
           <p className="mt-2 text-2xl">
             {subtitle}
           </p>
-          <div className="mt-4 flex justify-center gap-6">
+          <div className="mt-4 flex justify-center gap-3">
             {ctas.map((cta) => (
-              <a key={cta.label} href={cta.href} className="text-sm">
+              <a key={cta.label} href={cta.href} className={getCtaClass(cta.variant)}>
                 {cta.label}
               </a>
             ))}
@@ -58,22 +71,25 @@ function Hero({ title, subtitle, banner, ctas }: HeroProps) {
   )
 };
 
-function Title({ title, subtitle, banner, ctas }: TitleProps) {
+function Title({ title, subtitle, banner, ctas, dark }: TitleProps) {
   return (
-    <article className="w-full text-black">
-      <div className="text-center">
+    <article  className={`w-full h-full ${
+        dark ? "bg-black text-white" : "bg-[#f5f5f7] text-black"
+      }`}>
+      <div className="h-[560px] flex flex-col text-center px-6 pt-10">
+        <div className="relative z-10">
+            <h3 className="text-2xl font-semibold">{title}</h3>
+            <p className={`mt-2 text-xl relative z-10 ${dark ? "text-white/80" : ""}`}>{subtitle}</p>
 
-        <h3 className="text-2xl font-semibold">{title}</h3>
-        <p className="mt-2 text-xl">{subtitle}</p>
-
-        <div className="mt-3 flex justify-center gap-6">
-          {ctas.map((cta) => (
-            <a key={cta.label} href={cta.href} className="text-sm">{cta.label}</a>
-          ))}
+            <div className="mt-3 flex justify-center gap-6">
+              {ctas.map((cta) => (
+                <a key={cta.label} href={cta.href} className={getCtaClass(cta.variant)}>{cta.label}</a>
+              ))}
+            </div>
         </div>
 
-        <div className="mt-5">
-          <img src={banner.src} alt={banner.alt} className="mx-auto" />
+        <div className="mt-5 flex-1 flex items-end justify-center relative z-0 mt-[-120px]">
+          <img src={banner.src} alt={banner.alt} className="max-h-full w-auto" />
         </div>
       </div>
     </article>
@@ -98,8 +114,8 @@ function Body({
       subtitle="Say hello to the latest generation of Iphone."
       banner={{ src: iphoneBanner, alt: "Iphone"}}
       ctas={[
-        {label: "Learn more", href: "#"},
-        {label: "Buy", href: "#"},
+        {label: "Learn more", href: "#", variant:"primary"},
+        {label: "Shop Iphone", href: "#", variant:"secondary"},
       ]}
        />
 
@@ -113,8 +129,8 @@ function Body({
        }
        banner={{ src: appleWatchBanner, alt: "Apple watch series"}}
        ctas={[
-        {label: "Learn more", href: "#"},
-        {label: "Buy", href: "#"}
+        {label: "Learn more", href: "#", variant:"primary"},
+        {label: "Buy", href: "#", variant:"secondary"}
        ]}
        />
 
@@ -124,22 +140,24 @@ function Body({
        subtitle="Now supercharged by the M3 chip"
        banner={{ src: ipadAirBanner, alt: "iPad air"}}
        ctas={[
-        {label: "Learn more", href:"#"},
-        {label: "Buy", href:"#"}
+        {label: "Learn more", href:"#", variant:"primary"},
+        {label: "Buy", href:"#", variant:"secondary"}
        ]}
+       bgClass="bg-[radial-gradient(circle_at_top,#cfeaf7_0%,#eaf6fc_40%,#f9fdff_75%)]"
         />
 
         {/* 2-column section */}
         <section className="w-full">
-          <div className="mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
             {/* MacBook Pro 14 */}
             <Title
             title="MacBook Pro 14"
             subtitle="Supercharged by M5."
             banner={{ src: macbookPro, alt: "MacBook Pro 14"}}
+            dark
             ctas={[
-              {label: "Learn more", href:"#"},
-              {label: "Buy", href:"#"}
+              {label: "Learn more", href:"#", variant:"primary"},
+              {label: "Buy", href:"#", variant:"secondary"}
             ]}
             />
             {/* AirPod Pro 3 */}
@@ -153,8 +171,8 @@ function Body({
             }
             banner={{ src: airpodPro, alt: "AirPod Pro 3"}}
             ctas={[
-              {label: "Learn more", href:"#"},
-              {label: "Buy", href:"#"}
+              {label: "Learn more", href:"#", variant:"primary"},
+              {label: "Buy", href:"#", variant:"secondary"}
             ]}
             />
             {/* Apple Card */}
@@ -168,8 +186,8 @@ function Body({
             }
             banner={{ src: appleCard, alt: "Apple Card"}}
             ctas={[
-              {label: "Learn more", href:"#"},
-              {label: "Apply Now", href:"#"}
+              {label: "Learn more", href:"#", variant:"primary"},
+              {label: "Apply Now", href:"#", variant:"secondary"}
             ]}
             />
             {/* Fitness Card */}
@@ -183,8 +201,8 @@ function Body({
             }
             banner={{ src: fitnessCard, alt: "Fitness"}}
             ctas={[
-              {label: "Learn more", href:"#"},
-              {label: "Try it free", href:"#"}
+              {label: "Learn more", href:"#", variant:"primary"},
+              {label: "Try it free", href:"#", variant:"secondary"}
             ]}
             />
 
