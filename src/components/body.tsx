@@ -148,7 +148,7 @@ function Body({
 
         {/* 2-column section */}
         <section className="w-full">
-          <div className="mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
+          <div className="mx-auto px-3 grid grid-cols-1 md:grid-cols-2 gap-3 auto-rows-fr">
             {/* MacBook Pro 14 */}
             <Title
             title="MacBook Pro 14"

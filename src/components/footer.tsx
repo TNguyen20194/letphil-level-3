@@ -1,6 +1,6 @@
 function Footer() {
   return (
-     <div className="card">
+     <div cla ssName="card">
       </div>
   );
 }
