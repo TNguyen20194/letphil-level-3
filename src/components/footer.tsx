@@ -224,8 +224,9 @@ function Footer() {
   return (
      <footer className="w-full bg-[#1d1d1f] text-white/60">
       <div className="max-w-[1024px] mx-auto px-5 py-8">
+
         {/* Term & Footnotes */}
-        <div>
+        <div className=" text-[12px] leading-5 space-y-2 border-b border-white/30 pb-6">
           {footnotes.map((line, i) => (
             <p key={i}>
               {line.map((part, j) => (
@@ -243,6 +244,33 @@ function Footer() {
               ))}
             </p>
           ))}
+        </div>
+
+        {/* Link Grid */}
+        <div className="pt-6 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
+          {columns.map((col, colIndex) => (
+            <div key={colIndex} className="space-y-8">
+              {col.groups.map((group) => (
+                <div key={group.title}>
+                  <h4 className="text-[12px] font-semibold text-white/90">
+                    {group.title}
+                  </h4>
+
+                  <ul className="mt-2 space-y-1">
+                    {group.links.map((link) => (
+                      <li key={link.label}>
+                        <a href={link.href} className="text-[12px] hover:underline hover:text-white/90">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ))
+
+          }
         </div>
       </div>
      </footer>
