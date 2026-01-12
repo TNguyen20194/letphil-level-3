@@ -223,7 +223,7 @@ const columns:FooterColumn[] = [
 function Footer() {
   return (
      <footer className="w-full bg-[#1d1d1f] text-white/60">
-      <div>
+      <div className="max-w-[1024px] mx-auto px-5 py-8">
         {/* Term & Footnotes */}
         <div>
           {footnotes.map((line, i) => (
